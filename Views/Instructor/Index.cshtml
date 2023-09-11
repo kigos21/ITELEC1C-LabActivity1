@@ -10,6 +10,7 @@
     <th>Tenured</th>
     <th>Rank</th>
     <th>Hiring Date</th>
+    <th>Details</th>
   </thead>
   <tbody>
     @foreach (var Instructor in Model)
@@ -19,6 +20,7 @@
         <td>@(Instructor.IsTenured ? "Yes" : "No")</td>
         <td>@Instructor.Rank</td>
         <td>@Instructor.HiringDate</td>
+        <td><a asp-controller="Instructor" asp-action="Details" asp-route-id="@Instructor.Id">Show</a></td>
       </tr>
     }
   </tbody>

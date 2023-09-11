@@ -5,9 +5,7 @@ namespace LabActivity1.Controllers;
 
 public class StudentController : Controller
 {
-  public IActionResult Index()
-  {
-    List<Student> StudentList = new List<Student>()
+  List<Student> StudentList = new List<Student>()
     {
         new Student()
         {
@@ -38,6 +36,20 @@ public class StudentController : Controller
         },
     };
 
+  public IActionResult Index()
+  {
     return View(StudentList);
+  }
+
+  public IActionResult Details(int id)
+  {
+    Student? student = StudentList.FirstOrDefault(student => student.Id == id);
+
+    if (student == null)
+    {
+      return NotFound();
+    }
+
+    return View(student);
   }
 }
