@@ -1,0 +1,25 @@
+@{
+  ViewData["Title"] = "Instructors";
+}
+
+<h1>Instructors</h1>
+
+<table class="table">
+  <thead>
+    <th>Name</th>
+    <th>Tenured</th>
+    <th>Rank</th>
+    <th>Hiring Date</th>
+  </thead>
+  <tbody>
+    @foreach (var Instructor in Model)
+    {
+      <tr>
+        <td>@Instructor.FirstName @Instructor.LastName</td>
+        <td>@(Instructor.IsTenured ? "Yes" : "No")</td>
+        <td>@Instructor.Rank</td>
+        <td>@Instructor.HiringDate</td>
+      </tr>
+    }
+  </tbody>
+</table>
