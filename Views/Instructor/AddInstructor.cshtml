@@ -1,0 +1,37 @@
+@{
+  ViewData["Title"] = "Add Instructor";
+}
+
+@model Instructor;
+
+<form asp-action="AddInstructor" method="post">
+  <div class="mb-3">
+    <label asp-for="Id" class="form-label">ID</label>
+    <input required asp-for="Id" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="FirstName" class="form-label">First name</label>
+    <input required asp-for="FirstName" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="LastName" class="form-label">Last name</label>
+    <input required asp-for="LastName" class="form-control" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="IsTenured" class="form-label">Is Tenured</label>
+    <input required asp-for="IsTenured" type="text" class="form-control" placeholder="True" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="Rank" class="form-label">Rank</label>
+    <select required asp-for="Rank" asp-items="Html.GetEnumSelectList<Rank>()" class="form-control"></select>
+  </div>
+  <div class="mb-3">
+    <label asp-for="HiringDate" class="form-label">Hiring Date</label>
+    <input required asp-for="HiringDate" type="date" class="form-control" />
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Styles {
+
+}

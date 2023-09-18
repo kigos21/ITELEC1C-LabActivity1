@@ -76,7 +76,6 @@ public class StudentController : Controller
       return NotFound();
     }
 
-    student.Id = updatedStudent.Id;
     student.FirstName = updatedStudent.FirstName;
     student.LastName = updatedStudent.LastName;
     student.Birthdate = updatedStudent.Birthdate;

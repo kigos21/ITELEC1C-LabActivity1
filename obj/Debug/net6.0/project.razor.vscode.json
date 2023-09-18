@@ -23749,6 +23749,16 @@
       "FilePath": "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/Views/Student/Edit.cshtml",
       "TargetPath": "Views\\Student\\Edit.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/Views/Instructor/AddInstructor.cshtml",
+      "TargetPath": "Views\\Instructor\\AddInstructor.cshtml",
+      "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/Views/Instructor/Edit.cshtml",
+      "TargetPath": "Views\\Instructor\\Edit.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }

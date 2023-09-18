@@ -2,7 +2,7 @@
   ViewData["Title"] = "Edit data";
 }
 
-@model Student;
+@model Instructor;
 
 <form asp-action="Edit" method="post">
   <div class="mb-3">
@@ -14,17 +14,17 @@
     <input required asp-for="LastName" class="form-control" placeholder="@Model.LastName" />
   </div>
   <div class="mb-3">
-    <label asp-for="Birthdate" class="form-label">Birthdate</label>
-    <input required asp-for="Birthdate" type="date" class="form-control" placeholder="@Model.Birthdate" />
+    <label asp-for="IsTenured" class="form-label">Tenured</label>
+    <input required asp-for="IsTenured" type="text" class="form-control" placeholder="@Model.IsTenured" />
   </div>
   <div class="mb-3">
-    <label asp-for="Email" class="form-label">Email</label>
-    <input required asp-for="Email" type="email" class="form-control" placeholder="@Model.Email" />
+    <label asp-for="Rank" class="form-label">Rank</label>
+    <select required asp-for="Rank" asp-items="Html.GetEnumSelectList<Rank>()" class="form-control"
+      placeholder="@Model.Rank"></select>
   </div>
   <div class="mb-3">
-    <label asp-for="Major" class="form-label">Major</label>
-    <select required asp-for="Major" asp-items="Html.GetEnumSelectList<Major>()" class="form-control"
-      placeholder="@Model.Major"></select>
+    <label asp-for="HiringDate" class="form-label">Last name</label>
+    <input required asp-for="HiringDate" type="date" class="form-control" placeholder="@Model.HiringDate" />
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
