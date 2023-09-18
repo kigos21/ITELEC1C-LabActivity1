@@ -1,0 +1,38 @@
+@{
+  ViewData["Title"] = "Edit data";
+}
+
+@model Student;
+
+<form asp-action="Edit" method="post">
+  <div class="mb-3">
+    <label asp-for="Id" class="form-label">ID</label>
+    <input required asp-for="Id" class="form-control" placeholder="@Model.Id" disabled />
+  </div>
+  <div class="mb-3">
+    <label asp-for="FirstName" class="form-label">First name</label>
+    <input required asp-for="FirstName" class="form-control" placeholder="@Model.FirstName" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="LastName" class="form-label">Last name</label>
+    <input required asp-for="LastName" class="form-control" placeholder="@Model.LastName" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="Birthdate" class="form-label">Birthdate</label>
+    <input required asp-for="Birthdate" type="date" class="form-control" placeholder="@Model.Birthdate" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="Email" class="form-label">Email</label>
+    <input required asp-for="Email" type="email" class="form-control" placeholder="@Model.Email" />
+  </div>
+  <div class="mb-3">
+    <label asp-for="Major" class="form-label">Major</label>
+    <select required asp-for="Major" asp-items="Html.GetEnumSelectList<Major>()" class="form-control"
+      placeholder="@Model.Major"></select>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
+
+@section Styles {
+
+}
