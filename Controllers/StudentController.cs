@@ -97,4 +97,18 @@ public class StudentController : Controller
     StudentList.Add(newStudent);
     return View("Index", StudentList);
   }
+
+  [HttpGet]
+  public IActionResult Delete(int id)
+  {
+    Student? student = StudentList.FirstOrDefault(student => student.Id == id);
+
+    if (student == null)
+    {
+      return NotFound();
+    }
+
+    StudentList.Remove(student);
+    return View("Index", StudentList);
+  }
 }

@@ -94,4 +94,12 @@ public class InstructorController : Controller
 
     return View("Index", InstructorList);
   }
+
+  [HttpGet]
+  public IActionResult Delete(int id)
+  {
+    Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+    InstructorList.Remove(instructor);
+    return View("Index", InstructorList);
+  }
 }

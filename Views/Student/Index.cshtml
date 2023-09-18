@@ -16,6 +16,7 @@
       <th>Major</th>
       <th>Details</th>
       <th>Edit</th>
+      <th>Delete</th>
     </tr>
   </thead>
   <tbody>
@@ -28,6 +29,7 @@
         <td>@Student.Major</td>
         <td><a asp-controller="Student" asp-action="Details" asp-route-id="@Student.Id">Show</a></td>
         <td><a asp-controller="Student" asp-action="Edit" asp-route-id="@Student.Id">Edit</a></td>
+        <td><a style="color: red" asp-controller="Student" asp-action="Delete" asp-route-id="@Student.Id">Delete</a></td>
       </tr>
     }
   </tbody>
