@@ -99,6 +99,31 @@ public class InstructorController : Controller
   public IActionResult Delete(int id)
   {
     Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+
+    if (instructor == null)
+    {
+      return NotFound();
+    }
+
+    return View(instructor);
+  }
+
+  [HttpPost]
+  public IActionResult DeletePost(int id)
+  {
+    // if user clicked cancel
+    if (id == -1)
+    {
+      return View("Index", InstructorList);
+    }
+
+    Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+
+    if (instructor == null)
+    {
+      return NotFound();
+    }
+
     InstructorList.Remove(instructor);
     return View("Index", InstructorList);
   }
