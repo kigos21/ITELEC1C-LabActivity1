@@ -1,41 +1,19 @@
 using Microsoft.AspNetCore.Mvc;
 using LabActivity1.Models;
+using LabActivity1.Services;
 
 public class InstructorController : Controller
 {
-  List<Instructor> InstructorList = new List<Instructor>()
-    {
-      new Instructor()
-      {
-        Id = 1,
-        FirstName = "Minette",
-        LastName = "Chavez",
-        IsTenured = false,
-        Rank = Rank.Professor,
-        HiringDate = DateTime.Parse("08/20/2023")
-      },
-      new Instructor()
-      {
-        Id = 2,
-        FirstName = "Noel",
-        LastName = "Cansino",
-        IsTenured = true,
-        Rank = Rank.Professor,
-        HiringDate = DateTime.Parse("08/25/2023")
-      },
-      new Instructor()
-      {
-        Id = 3,
-        FirstName = "Kevin",
-        LastName = "Coraza",
-        IsTenured = true,
-        Rank = Rank.Professor,
-        HiringDate = DateTime.Parse("09/01/2023")
-      },
-    };
+  private readonly DataServiceInterface data;
+
+  public InstructorController(DataServiceInterface _data)
+  {
+    data = _data;
+  }
+
   public IActionResult Index()
   {
-    return View(InstructorList);
+    return View(data.InstructorList);
   }
 
   [HttpGet]
@@ -47,13 +25,13 @@ public class InstructorController : Controller
   [HttpPost]
   public IActionResult AddInstructor(Instructor newInstructor)
   {
-    InstructorList.Add(newInstructor);
-    return View("Index", InstructorList);
+    data.InstructorList.Add(newInstructor);
+    return RedirectToAction("Index");
   }
 
   public IActionResult Details(int id)
   {
-    Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == id);
 
     if (instructor == null)
     {
@@ -66,7 +44,7 @@ public class InstructorController : Controller
   [HttpGet]
   public IActionResult Edit(int id)
   {
-    Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == id);
 
     if (instructor == null)
     {
@@ -79,7 +57,7 @@ public class InstructorController : Controller
   [HttpPost]
   public IActionResult Edit(Instructor updatedInstructor)
   {
-    Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == updatedInstructor.Id);
+    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == updatedInstructor.Id);
 
     if (instructor == null)
     {
@@ -92,13 +70,13 @@ public class InstructorController : Controller
     instructor.Rank = updatedInstructor.Rank;
     instructor.HiringDate = updatedInstructor.HiringDate;
 
-    return View("Index", InstructorList);
+    return RedirectToAction("Index");
   }
 
   [HttpGet]
   public IActionResult Delete(int id)
   {
-    Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == id);
 
     if (instructor == null)
     {
@@ -114,17 +92,17 @@ public class InstructorController : Controller
     // if user clicked cancel
     if (id == -1)
     {
-      return View("Index", InstructorList);
+      return RedirectToAction("Index");
     }
 
-    Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == id);
 
     if (instructor == null)
     {
       return NotFound();
     }
 
-    InstructorList.Remove(instructor);
-    return View("Index", InstructorList);
+    data.InstructorList.Remove(instructor);
+    return RedirectToAction("Index");
   }
 }

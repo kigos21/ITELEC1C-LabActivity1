@@ -1,44 +1,21 @@
 using Microsoft.AspNetCore.Mvc;
+using LabActivity1.Services;
 using LabActivity1.Models;
 
 namespace LabActivity1.Controllers;
 
 public class StudentController : Controller
 {
-  List<Student> StudentList = new List<Student>()
-    {
-        new Student()
-        {
-          Id = 1,
-          FirstName = "John",
-          LastName = "De Castro",
-          Birthdate = DateTime.Parse("07/21/2003"),
-          Email = "jd@gmail.com",
-          Major = Major.BSIT
-        },
-        new Student()
-        {
-          Id = 2,
-          FirstName = "Melfred",
-          LastName = "Fonclara",
-          Birthdate = DateTime.Parse("01/14/2002"),
-          Email = "melfred@gmail.com",
-          Major = Major.BSCS
-        },
-        new Student()
-        {
-          Id = 3,
-          FirstName = "Karl",
-          LastName = "Tacula",
-          Birthdate = DateTime.Parse("12/29/2002"),
-          Email = "karl@gmail.com",
-          Major = Major.BSIS
-        },
-    };
+  private readonly DataServiceInterface data;
+
+  public StudentController(DataServiceInterface _data)
+  {
+    data = _data;
+  }
 
   public IActionResult Index()
   {
-    return View(StudentList);
+    return View(data.StudentList);
   }
 
   [HttpGet]
@@ -50,13 +27,13 @@ public class StudentController : Controller
   [HttpPost]
   public IActionResult AddStudent(Student newStudent)
   {
-    StudentList.Add(newStudent);
-    return View("Index", StudentList);
+    data.StudentList.Add(newStudent);
+    return RedirectToAction("Index");
   }
 
   public IActionResult Details(int id)
   {
-    Student? student = StudentList.FirstOrDefault(student => student.Id == id);
+    Student? student = data.StudentList.FirstOrDefault(student => student.Id == id);
 
     if (student == null)
     {
@@ -69,7 +46,7 @@ public class StudentController : Controller
   [HttpGet]
   public IActionResult Edit(int id)
   {
-    Student? student = StudentList.FirstOrDefault(student => student.Id == id);
+    Student? student = data.StudentList.FirstOrDefault(student => student.Id == id);
 
     if (student == null)
     {
@@ -82,7 +59,7 @@ public class StudentController : Controller
   [HttpPost]
   public IActionResult Edit(Student updatedStudent)
   {
-    Student? student = StudentList.FirstOrDefault(student => student.Id == updatedStudent.Id);
+    Student? student = data.StudentList.FirstOrDefault(student => student.Id == updatedStudent.Id);
 
     if (student == null)
     {
@@ -95,13 +72,13 @@ public class StudentController : Controller
     student.Email = updatedStudent.Email;
     student.Major = updatedStudent.Major;
 
-    return View("Index", StudentList);
+    return RedirectToAction("Index");
   }
 
   [HttpGet]
   public IActionResult Delete(int id)
   {
-    Student? student = StudentList.FirstOrDefault(student => student.Id == id);
+    Student? student = data.StudentList.FirstOrDefault(student => student.Id == id);
 
     if (student == null)
     {
@@ -117,17 +94,17 @@ public class StudentController : Controller
     // user cancel operation
     if (id == -1)
     {
-      return View("Index", StudentList);
+      return RedirectToAction("Index");
     }
 
-    Student? student = StudentList.FirstOrDefault(student => student.Id == id);
+    Student? student = data.StudentList.FirstOrDefault(student => student.Id == id);
 
     if (student == null)
     {
       return NotFound();
     }
 
-    StudentList.Remove(student);
-    return View("Index", StudentList);
+    data.StudentList.Remove(student);
+    return RedirectToAction("Index");
   }
 }
