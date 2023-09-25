@@ -18,8 +18,8 @@
     <input required asp-for="LastName" class="form-control" />
   </div>
   <div class="mb-3">
-    <label asp-for="IsTenured" class="form-label">Is Tenured</label>
-    <input required asp-for="IsTenured" type="text" class="form-control" placeholder="True" />
+    <input type="checkbox" class="form-label" id="isTenuredCheckbox" asp-for="IsTenured" />
+    <label for="isTenuredCheckbox">Tenured</label>
   </div>
   <div class="mb-3">
     <label asp-for="Rank" class="form-label">Rank</label>
@@ -31,7 +31,3 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-@section Styles {
-
-}

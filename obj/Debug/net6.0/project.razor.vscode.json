@@ -23764,6 +23764,11 @@
       "FilePath": "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/Views/Instructor/Delete.cshtml",
       "TargetPath": "Views\\Instructor\\Delete.cshtml",
       "FileKind": "mvc"
+    },
+    {
+      "FilePath": "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/Views/Student/Delete.cshtml",
+      "TargetPath": "Views\\Student\\Delete.cshtml",
+      "FileKind": "mvc"
     }
   ]
 }

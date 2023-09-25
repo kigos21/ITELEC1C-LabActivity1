@@ -38,18 +38,6 @@ public class InstructorController : Controller
     return View(InstructorList);
   }
 
-  public IActionResult Details(int id)
-  {
-    Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == id);
-
-    if (instructor == null)
-    {
-      return NotFound();
-    }
-
-    return View(instructor);
-  }
-
   [HttpGet]
   public IActionResult AddInstructor()
   {
@@ -61,6 +49,18 @@ public class InstructorController : Controller
   {
     InstructorList.Add(newInstructor);
     return View("Index", InstructorList);
+  }
+
+  public IActionResult Details(int id)
+  {
+    Instructor? instructor = InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+
+    if (instructor == null)
+    {
+      return NotFound();
+    }
+
+    return View(instructor);
   }
 
   [HttpGet]

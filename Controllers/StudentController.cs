@@ -41,6 +41,19 @@ public class StudentController : Controller
     return View(StudentList);
   }
 
+  [HttpGet]
+  public IActionResult AddStudent()
+  {
+    return View();
+  }
+
+  [HttpPost]
+  public IActionResult AddStudent(Student newStudent)
+  {
+    StudentList.Add(newStudent);
+    return View("Index", StudentList);
+  }
+
   public IActionResult Details(int id)
   {
     Student? student = StudentList.FirstOrDefault(student => student.Id == id);
@@ -86,21 +99,27 @@ public class StudentController : Controller
   }
 
   [HttpGet]
-  public IActionResult AddStudent()
+  public IActionResult Delete(int id)
   {
-    return View();
+    Student? student = StudentList.FirstOrDefault(student => student.Id == id);
+
+    if (student == null)
+    {
+      return NotFound();
+    }
+
+    return View(student);
   }
 
   [HttpPost]
-  public IActionResult AddStudent(Student newStudent)
+  public IActionResult DeletePost(int id)
   {
-    StudentList.Add(newStudent);
-    return View("Index", StudentList);
-  }
+    // user cancel operation
+    if (id == -1)
+    {
+      return View("Index", StudentList);
+    }
 
-  [HttpGet]
-  public IActionResult Delete(int id)
-  {
     Student? student = StudentList.FirstOrDefault(student => student.Id == id);
 
     if (student == null)

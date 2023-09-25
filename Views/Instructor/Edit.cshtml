@@ -14,8 +14,17 @@
     <input required asp-for="LastName" class="form-control" placeholder="@Model.LastName" />
   </div>
   <div class="mb-3">
-    <label asp-for="IsTenured" class="form-label">Tenured</label>
-    <input required asp-for="IsTenured" type="text" class="form-control" placeholder="@Model.IsTenured" />
+    @if (Model.IsTenured)
+    {
+      <input type="checkbox" class="form-label" id="isTenuredCheckbox" asp-for="IsTenured" checked />
+    }
+
+    else
+    {
+      <input type="checkbox" class="form-label" id="isTenuredCheckbox" asp-for="IsTenured" />
+    }
+
+    <label for="isTenuredCheckbox">Tenured</label>
   </div>
   <div class="mb-3">
     <label asp-for="Rank" class="form-label">Rank</label>
@@ -28,7 +37,3 @@
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
-
-@section Styles {
-
-}
