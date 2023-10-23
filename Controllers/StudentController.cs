@@ -1,21 +1,22 @@
 using Microsoft.AspNetCore.Mvc;
 using LabActivity1.Services;
 using LabActivity1.Models;
+using LabActivity1.Data;
 
 namespace LabActivity1.Controllers;
 
 public class StudentController : Controller
 {
-  private readonly DataServiceInterface data;
+  private readonly AppDbContext _dbContext;
 
-  public StudentController(DataServiceInterface _data)
+  public StudentController(AppDbContext dbContext)
   {
-    data = _data;
+    _dbContext = dbContext;
   }
 
   public IActionResult Index()
   {
-    return View(data.StudentList);
+    return View(_dbContext.Students);
   }
 
   [HttpGet]
@@ -27,13 +28,14 @@ public class StudentController : Controller
   [HttpPost]
   public IActionResult AddStudent(Student newStudent)
   {
-    data.StudentList.Add(newStudent);
+    _dbContext.Students.Add(newStudent);
+    _dbContext.SaveChanges();
     return RedirectToAction("Index");
   }
 
   public IActionResult Details(int id)
   {
-    Student? student = data.StudentList.FirstOrDefault(student => student.Id == id);
+    Student? student = _dbContext.Students.FirstOrDefault(student => student.Id == id);
 
     if (student == null)
     {
@@ -46,7 +48,7 @@ public class StudentController : Controller
   [HttpGet]
   public IActionResult Edit(int id)
   {
-    Student? student = data.StudentList.FirstOrDefault(student => student.Id == id);
+    Student? student = _dbContext.Students.FirstOrDefault(student => student.Id == id);
 
     if (student == null)
     {
@@ -59,7 +61,7 @@ public class StudentController : Controller
   [HttpPost]
   public IActionResult Edit(Student updatedStudent)
   {
-    Student? student = data.StudentList.FirstOrDefault(student => student.Id == updatedStudent.Id);
+    Student? student = _dbContext.Students.FirstOrDefault(student => student.Id == updatedStudent.Id);
 
     if (student == null)
     {
@@ -71,6 +73,7 @@ public class StudentController : Controller
     student.Birthdate = updatedStudent.Birthdate;
     student.Email = updatedStudent.Email;
     student.Major = updatedStudent.Major;
+    _dbContext.SaveChanges();
 
     return RedirectToAction("Index");
   }
@@ -78,7 +81,7 @@ public class StudentController : Controller
   [HttpGet]
   public IActionResult Delete(int id)
   {
-    Student? student = data.StudentList.FirstOrDefault(student => student.Id == id);
+    Student? student = _dbContext.Students.FirstOrDefault(student => student.Id == id);
 
     if (student == null)
     {
@@ -97,14 +100,16 @@ public class StudentController : Controller
       return RedirectToAction("Index");
     }
 
-    Student? student = data.StudentList.FirstOrDefault(student => student.Id == id);
+    Student? student = _dbContext.Students.FirstOrDefault(student => student.Id == id);
 
     if (student == null)
     {
       return NotFound();
     }
 
-    data.StudentList.Remove(student);
+    _dbContext.Students.Remove(student);
+    _dbContext.SaveChanges();
+
     return RedirectToAction("Index");
   }
 }

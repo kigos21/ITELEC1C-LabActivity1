@@ -1,19 +1,20 @@
 using Microsoft.AspNetCore.Mvc;
 using LabActivity1.Models;
 using LabActivity1.Services;
+using LabActivity1.Data;
 
 public class InstructorController : Controller
 {
-  private readonly DataServiceInterface data;
+  private readonly AppDbContext _dbContext;
 
-  public InstructorController(DataServiceInterface _data)
+  public InstructorController(AppDbContext dbContext)
   {
-    data = _data;
+    _dbContext = dbContext;
   }
 
   public IActionResult Index()
   {
-    return View(data.InstructorList);
+    return View(_dbContext.Instructors);
   }
 
   [HttpGet]
@@ -25,13 +26,14 @@ public class InstructorController : Controller
   [HttpPost]
   public IActionResult AddInstructor(Instructor newInstructor)
   {
-    data.InstructorList.Add(newInstructor);
+    _dbContext.Instructors.Add(newInstructor);
+    _dbContext.SaveChanges();
     return RedirectToAction("Index");
   }
 
   public IActionResult Details(int id)
   {
-    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+    Instructor? instructor = _dbContext.Instructors.FirstOrDefault(instructor => instructor.Id == id);
 
     if (instructor == null)
     {
@@ -44,7 +46,7 @@ public class InstructorController : Controller
   [HttpGet]
   public IActionResult Edit(int id)
   {
-    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+    Instructor? instructor = _dbContext.Instructors.FirstOrDefault(instructor => instructor.Id == id);
 
     if (instructor == null)
     {
@@ -57,7 +59,7 @@ public class InstructorController : Controller
   [HttpPost]
   public IActionResult Edit(Instructor updatedInstructor)
   {
-    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == updatedInstructor.Id);
+    Instructor? instructor = _dbContext.Instructors.FirstOrDefault(instructor => instructor.Id == updatedInstructor.Id);
 
     if (instructor == null)
     {
@@ -69,6 +71,7 @@ public class InstructorController : Controller
     instructor.IsTenured = updatedInstructor.IsTenured;
     instructor.Rank = updatedInstructor.Rank;
     instructor.HiringDate = updatedInstructor.HiringDate;
+    _dbContext.SaveChanges();
 
     return RedirectToAction("Index");
   }
@@ -76,7 +79,7 @@ public class InstructorController : Controller
   [HttpGet]
   public IActionResult Delete(int id)
   {
-    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+    Instructor? instructor = _dbContext.Instructors.FirstOrDefault(instructor => instructor.Id == id);
 
     if (instructor == null)
     {
@@ -95,14 +98,15 @@ public class InstructorController : Controller
       return RedirectToAction("Index");
     }
 
-    Instructor? instructor = data.InstructorList.FirstOrDefault(instructor => instructor.Id == id);
+    Instructor? instructor = _dbContext.Instructors.FirstOrDefault(instructor => instructor.Id == id);
 
     if (instructor == null)
     {
       return NotFound();
     }
 
-    data.InstructorList.Remove(instructor);
+    _dbContext.Instructors.Remove(instructor);
+    _dbContext.SaveChanges();
     return RedirectToAction("Index");
   }
 }
