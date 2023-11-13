@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/LabActivity1.csproj": {}
+    "/home/jd/Github/ITELEC1C-LabActivity1/LabActivity1.csproj": {}
   },
   "projects": {
-    "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/LabActivity1.csproj": {
+    "/home/jd/Github/ITELEC1C-LabActivity1/LabActivity1.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/LabActivity1.csproj",
+        "projectUniqueName": "/home/jd/Github/ITELEC1C-LabActivity1/LabActivity1.csproj",
         "projectName": "LabActivity1",
-        "projectPath": "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/LabActivity1.csproj",
+        "projectPath": "/home/jd/Github/ITELEC1C-LabActivity1/LabActivity1.csproj",
         "packagesPath": "/home/jd/.nuget/packages/",
-        "outputPath": "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/obj/",
+        "outputPath": "/home/jd/Github/ITELEC1C-LabActivity1/obj/",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "/home/jd/.nuget/NuGet/NuGet.Config"
@@ -55,10 +55,25 @@
             "net47",
             "net471",
             "net472",
-            "net48"
+            "net48",
+            "net481"
           ],
           "assetTargetFallback": true,
           "warn": true,
+          "downloadDependencies": [
+            {
+              "name": "Microsoft.AspNetCore.App.Ref",
+              "version": "[6.0.24, 6.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Host.linux-x64",
+              "version": "[6.0.24, 6.0.24]"
+            },
+            {
+              "name": "Microsoft.NETCore.App.Ref",
+              "version": "[6.0.24, 6.0.24]"
+            }
+          ],
           "frameworkReferences": {
             "Microsoft.AspNetCore.App": {
               "privateAssets": "none"
@@ -67,7 +82,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/lib64/dotnet/sdk/6.0.122/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "/usr/lib/dotnet/sdk/7.0.113/RuntimeIdentifierGraph.json"
         }
       }
     }

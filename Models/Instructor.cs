@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace LabActivity1.Models
 {
   public enum Rank

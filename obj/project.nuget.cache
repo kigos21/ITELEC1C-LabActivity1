@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "2u6m5SZZrcfCSt0/JqjFbeSRuDEBs6lw1fQGVCgvqHjFVzfRenBuh7aUUVRQ22DVENDr0TiNXKInYbCGdS7inQ==",
+  "dgSpecHash": "iti+tuVsqTIgiEMpoXi3QsBNr4ZiYUw8kRj0COa4ZqhYyC5w5W8qarpKP7p6zK0fhmFFtBDD38/4IO2Br0qUnw==",
   "success": true,
-  "projectFilePath": "/home/jd/Documents/3-YR-1-SEM/ITELEC1C/LabActivity1/LabActivity1.csproj",
+  "projectFilePath": "/home/jd/Github/ITELEC1C-LabActivity1/LabActivity1.csproj",
   "expectedPackageFiles": [
     "/home/jd/.nuget/packages/azure.core/1.25.0/azure.core.1.25.0.nupkg.sha512",
     "/home/jd/.nuget/packages/azure.identity/1.7.0/azure.identity.1.7.0.nupkg.sha512",
@@ -62,7 +62,10 @@
     "/home/jd/.nuget/packages/system.text.encodings.web/7.0.0/system.text.encodings.web.7.0.0.nupkg.sha512",
     "/home/jd/.nuget/packages/system.text.json/7.0.0/system.text.json.7.0.0.nupkg.sha512",
     "/home/jd/.nuget/packages/system.threading.tasks.extensions/4.5.4/system.threading.tasks.extensions.4.5.4.nupkg.sha512",
-    "/home/jd/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512"
+    "/home/jd/.nuget/packages/system.windows.extensions/6.0.0/system.windows.extensions.6.0.0.nupkg.sha512",
+    "/home/jd/.nuget/packages/microsoft.netcore.app.ref/6.0.24/microsoft.netcore.app.ref.6.0.24.nupkg.sha512",
+    "/home/jd/.nuget/packages/microsoft.aspnetcore.app.ref/6.0.24/microsoft.aspnetcore.app.ref.6.0.24.nupkg.sha512",
+    "/home/jd/.nuget/packages/microsoft.netcore.app.host.linux-x64/6.0.24/microsoft.netcore.app.host.linux-x64.6.0.24.nupkg.sha512"
   ],
   "logs": []
 }
