@@ -24,6 +24,11 @@ namespace LabActivity1.Controllers
     [HttpPost]
     public async Task<IActionResult> Login(LoginViewModel loginInfo)
     {
+      if (!ModelState.IsValid)
+      {
+        return View();
+      }
+
       var result = await _signInManager.PasswordSignInAsync(loginInfo.UserName, loginInfo.Password, loginInfo.RememberMe, false);
 
       if (result.Succeeded)
@@ -46,29 +51,27 @@ namespace LabActivity1.Controllers
     [HttpPost]
     public async Task<IActionResult> Register(RegisterViewModel registerInfo)
     {
-      if (!ModelState.IsValid)
+      if (ModelState.IsValid)
       {
-        return View();
-      }
+        User newUser = new User();
+        newUser.UserName = registerInfo.UserName;
+        newUser.Firstname = registerInfo.FirstName;
+        newUser.Lastname = registerInfo.LastName;
+        newUser.Email = registerInfo.Email;
+        newUser.PhoneNumber = registerInfo.Phone;
 
-      User newUser = new User();
-      newUser.UserName = registerInfo.UserName;
-      newUser.Firstname = registerInfo.FirstName;
-      newUser.Lastname = registerInfo.LastName;
-      newUser.Email = registerInfo.Email;
-      newUser.PhoneNumber = registerInfo.Phone;
+        var result = await _userManager.CreateAsync(newUser, registerInfo.Password);
 
-      var result = await _userManager.CreateAsync(newUser, registerInfo.Password);
-
-      if (result.Succeeded)
-      {
-        return RedirectToAction("Index", "Instructor");
-      }
-      else
-      {
-        foreach (var error in result.Errors)
+        if (result.Succeeded)
         {
-          ModelState.AddModelError("", error.Description);
+          return RedirectToAction("Index", "Instructor");
+        }
+        else
+        {
+          foreach (var error in result.Errors)
+          {
+            ModelState.AddModelError("", error.Description);
+          }
         }
       }
 
