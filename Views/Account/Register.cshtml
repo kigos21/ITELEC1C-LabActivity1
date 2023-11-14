@@ -1,0 +1,53 @@
+@{
+  ViewData["Title"] = "Register";
+}
+
+@model LabActivity1.ViewModels.RegisterViewModel;
+
+<h1>Register a new account</h1>
+
+<form asp-action="Register" method="post">
+  <div class="form-group mb-3">
+    <label class="form-label" asp-for="UserName"></label>
+    <input class="form-control" asp-for="UserName" />
+    <span class="text-danger" asp-validation-for="UserName"></span>
+  </div>
+
+  <div class="form-group mb-3">
+    <label class="form-label" asp-for="Password"></label>
+    <input class="form-control" asp-for="Password" />
+    <span class="text-danger" asp-validation-for="Password"></span>
+  </div>
+
+  <div class="form-group mb-3">
+    <label class="form-label" asp-for="ConfirmPassword"></label>
+    <input class="form-control" asp-for="ConfirmPassword" />
+    <span class="text-danger" asp-validation-for="ConfirmPassword"></span>
+  </div>
+
+  <div class="form-group mb-3">
+    <label class="form-label" asp-for="FirstName"></label>
+    <input class="form-control" asp-for="FirstName" />
+    <span class="text-danger" asp-validation-for="FirstName"></span>
+  </div>
+
+  <div class="form-group mb-3">
+    <label class="form-label" asp-for="LastName"></label>
+    <input class="form-control" asp-for="LastName" />
+    <span class="text-danger" asp-validation-for="LastName"></span>
+  </div>
+
+  <div class="form-group mb-3">
+    <label class="form-label" asp-for="Email"></label>
+    <input class="form-control" asp-for="Email" />
+    <span class="text-danger" asp-validation-for="Email"></span>
+  </div>
+
+  <div class="form-group mb-3">
+    <label class="form-label" asp-for="Phone"></label>
+    <input class="form-control" asp-for="Phone" />
+    <span class="text-danger" asp-validation-for="Phone"></span>
+  </div>
+
+  <input type="submit" value="Register Account" class="btn btn-primary">
+</form>

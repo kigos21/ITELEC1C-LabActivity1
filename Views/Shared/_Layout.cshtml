@@ -37,6 +37,27 @@
                             <a class="nav-link text-dark" href="/instructor">Instructor</a>
                         </li>
                     </ul>
+
+                    <div>
+                        @* Authentication *@
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            <button class="btn btn-danger">
+                                <a class="nav-link text-dark" asp-action="Logout" asp-controller="Account">Logout</a>
+                            </button>
+                        }
+                        else
+                        {
+                            <button class="btn btn-primary">
+                                <a class="nav-link text-white" asp-action="Login" asp-controller="Account">Login</a>
+                            </button>
+
+                            <button class="btn btn-secondary">
+                                <a class="nav-link text-white" asp-action="Register" asp-controller="Account">Register</a>
+                            </button>
+                        }
+                    </div>
+
                 </div>
             </div>
         </nav>
