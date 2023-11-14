@@ -6,13 +6,17 @@
 
 <form asp-action="Edit" method="post">
   <div class="mb-3">
-    <label asp-for="FirstName" class="form-label">First name</label>
-    <input required asp-for="FirstName" class="form-control" placeholder="@Model.FirstName" />
+    <label asp-for="FirstName" class="form-label"></label>
+    <input asp-for="FirstName" class="form-control" placeholder="@Model.FirstName" />
+    <span class="text-danger" asp-validation-for="FirstName"></span>
   </div>
+
   <div class="mb-3">
-    <label asp-for="LastName" class="form-label">Last name</label>
-    <input required asp-for="LastName" class="form-control" placeholder="@Model.LastName" />
+    <label asp-for="LastName" class="form-label"></label>
+    <input asp-for="LastName" class="form-control" placeholder="@Model.LastName" />
+    <span class="text-danger" asp-validation-for="LastName"></span>
   </div>
+
   <div class="mb-3">
     @if (Model.IsTenured)
     {
@@ -24,16 +28,22 @@
       <input type="checkbox" class="form-label" id="isTenuredCheckbox" asp-for="IsTenured" />
     }
 
-    <label for="isTenuredCheckbox">Tenured</label>
+    <label for="isTenuredCheckbox"></label>
+    <span class="text-danger" asp-validation-for="IsTenured"></span>
   </div>
+
   <div class="mb-3">
-    <label asp-for="Rank" class="form-label">Rank</label>
-    <select required asp-for="Rank" asp-items="Html.GetEnumSelectList<Rank>()" class="form-control"
+    <label asp-for="Rank" class="form-label"></label>
+    <select asp-for="Rank" asp-items="Html.GetEnumSelectList<Rank>()" class="form-control"
       placeholder="@Model.Rank"></select>
+    <span class="text-danger" asp-validation-for="Rank"></span>
   </div>
+
   <div class="mb-3">
-    <label asp-for="HiringDate" class="form-label">Last name</label>
-    <input required asp-for="HiringDate" type="date" class="form-control" placeholder="@Model.HiringDate" />
+    <label asp-for="HiringDate" class="form-label"></label>
+    <input asp-for="HiringDate" type="date" class="form-control" placeholder="@Model.HiringDate" />
+    <span class="text-danger" asp-validation-for="HiringDate"></span>
   </div>
+
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

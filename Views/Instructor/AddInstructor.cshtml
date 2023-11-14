@@ -6,24 +6,29 @@
 
 <form asp-action="AddInstructor" method="post">
   <div class="mb-3">
-    <label asp-for="FirstName" class="form-label">First name</label>
-    <input required asp-for="FirstName" class="form-control" />
+    <label asp-for="FirstName" class="form-label"></label>
+    <input asp-for="FirstName" class="form-control" />
+    <span class="text-danger" asp-validation-for="FirstName"></span>
   </div>
   <div class="mb-3">
-    <label asp-for="LastName" class="form-label">Last name</label>
-    <input required asp-for="LastName" class="form-control" />
+    <label asp-for="LastName" class="form-label"></label>
+    <input asp-for="LastName" class="form-control" />
+    <span class="text-danger" asp-validation-for="LastName"></span>
   </div>
   <div class="mb-3">
     <input type="checkbox" class="form-label" id="isTenuredCheckbox" asp-for="IsTenured" />
-    <label for="isTenuredCheckbox">Tenured</label>
+    <label for="isTenuredCheckbox"></label>
+    <span class="text-danger" asp-validation-for="IsTenured"></span>
   </div>
   <div class="mb-3">
-    <label asp-for="Rank" class="form-label">Rank</label>
-    <select required asp-for="Rank" asp-items="Html.GetEnumSelectList<Rank>()" class="form-control"></select>
+    <label asp-for="Rank" class="form-label"></label>
+    <select asp-for="Rank" asp-items="Html.GetEnumSelectList<Rank>()" class="form-control"></select>
+    <span class="text-danger" asp-validation-for="Rank"></span>
   </div>
   <div class="mb-3">
-    <label asp-for="HiringDate" class="form-label">Hiring Date</label>
-    <input required asp-for="HiringDate" type="date" class="form-control" />
+    <label asp-for="HiringDate" class="form-label"></label>
+    <input asp-for="HiringDate" type="date" class="form-control" />
+    <span class="text-danger" asp-validation-for="HiringDate"></span>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>

@@ -26,6 +26,11 @@ public class InstructorController : Controller
   [HttpPost]
   public IActionResult AddInstructor(Instructor newInstructor)
   {
+    if (!ModelState.IsValid)
+    {
+      return View();
+    }
+
     _dbContext.Instructors.Add(newInstructor);
     _dbContext.SaveChanges();
     return RedirectToAction("Index");
@@ -59,6 +64,11 @@ public class InstructorController : Controller
   [HttpPost]
   public IActionResult Edit(Instructor updatedInstructor)
   {
+    if (!ModelState.IsValid)
+    {
+      return View();
+    }
+
     Instructor? instructor = _dbContext.Instructors.FirstOrDefault(instructor => instructor.Id == updatedInstructor.Id);
 
     if (instructor == null)

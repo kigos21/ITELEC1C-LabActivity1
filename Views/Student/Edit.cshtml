@@ -6,25 +6,30 @@
 
 <form asp-action="Edit" method="post">
   <div class="mb-3">
-    <label asp-for="FirstName" class="form-label">First name</label>
-    <input required asp-for="FirstName" class="form-control" placeholder="@Model.FirstName" />
+    <label asp-for="FirstName" class="form-label"></label>
+    <input required asp-for="FirstName" class="form-control" placeholder="@(Model.FirstName)" />
+    <span class="text-danger" asp-validation-for="FirstName"></span>
   </div>
   <div class="mb-3">
-    <label asp-for="LastName" class="form-label">Last name</label>
+    <label asp-for="LastName" class="form-label"></label>
     <input required asp-for="LastName" class="form-control" placeholder="@Model.LastName" />
+    <span class="text-danger" asp-validation-for="LastName"></span>
   </div>
   <div class="mb-3">
-    <label asp-for="Birthdate" class="form-label">Birthdate</label>
+    <label asp-for="Birthdate" class="form-label"></label>
     <input required asp-for="Birthdate" type="date" class="form-control" placeholder="@Model.Birthdate" />
+    <span class="text-danger" asp-validation-for="Birthdate"></span>
   </div>
   <div class="mb-3">
-    <label asp-for="Email" class="form-label">Email</label>
+    <label asp-for="Email" class="form-label"></label>
     <input required asp-for="Email" type="email" class="form-control" placeholder="@Model.Email" />
+    <span class="text-danger" asp-validation-for="Email"></span>
   </div>
   <div class="mb-3">
-    <label asp-for="Major" class="form-label">Major</label>
+    <label asp-for="Major" class="form-label"></label>
     <select required asp-for="Major" asp-items="Html.GetEnumSelectList<Major>()" class="form-control"
       placeholder="@Model.Major"></select>
+    <span class="text-danger" asp-validation-for="Major"></span>
   </div>
   <button type="submit" class="btn btn-primary">Submit</button>
 </form>
